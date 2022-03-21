@@ -13,5 +13,5 @@ class Nota extends Model
         'titulo',
         'contenido'
     ];
-    
+
 }

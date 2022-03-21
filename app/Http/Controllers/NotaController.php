@@ -15,10 +15,10 @@ class NotaController extends Controller
      */
     public function index()
     {
-
+  
         $notas = Nota::get();
 
-        return Inertia::render('Notas/Index',[
+        return Inertia::render('Notas/Index', [
             'notas' => $notas
         ]);
     }
@@ -30,7 +30,7 @@ class NotaController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Notas/Create');
+       return Inertia::render('Notas/Create');
     }
 
     /**
@@ -41,15 +41,15 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
+    
+      $request->validate([
+          'titulo' => 'required',
+          'contenido' => 'required',
+      ]);
+    
+       Nota::create($request->all());
 
-        $request->validate([
-            'titulo' => 'required',
-            'contenido' => 'required',
-        ]);
-      
-         Nota::create($request->all());
-  
-         return redirect()->route('noticias.index');
+       return redirect()->route('noticias.index');
 
     }
 
@@ -61,7 +61,7 @@ class NotaController extends Controller
      */
     public function show(Nota $nota)
     {
-        return Inertia::render('Notas/Show');
+        //
     }
 
     /**

@@ -41,7 +41,7 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'titulo' => 'required',
             'contenido' => 'required',
@@ -61,7 +61,7 @@ class NotaController extends Controller
      */
     public function show(Nota $nota)
     {
-        //
+        return Inertia::render('Notas/Show');
     }
 
     /**

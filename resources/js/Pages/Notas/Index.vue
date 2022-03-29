@@ -2,18 +2,27 @@
     <app-layout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                listar noticias
+                Listar
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    
+                    <inertia-link :href="route('noticias.create')">
+                        Crear
+                    </inertia-link>
 
                     <table>
                         <tr v-for="nota in notas" :key="nota.id">
                             <td>
                                 {{nota.titulo}}
+                            </td>
+                            <td>
+                                <inertia-link :href="route('noticias.show', nota.id)">
+                                     Ver
+                                </inertia-link>
                             </td>
                         </tr>
                     </table>
@@ -27,16 +36,13 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
-
-
+    
     export default defineComponent({
         components: {
             AppLayout,
-
         },
         props: {
             notas: Array,
-
         }
     })
 </script>

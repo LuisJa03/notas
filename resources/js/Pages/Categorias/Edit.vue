@@ -23,8 +23,8 @@
                             </label>
 
                             <select v-model="form.category_status" class="form-input w-full rounded-md shadow-sm">
-                                <option value=1>Enabled</option>
-                                <option value=0>Disabled</option>
+                                <option value=1 :selected="[form.category_status ? 'selected' : '']">Enabled</option>
+                                <option value=0 :selected="[form.category_status ? '' : 'selected']">Disabled</option>
                             </select>
 
                          </div>
@@ -48,7 +48,7 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
-    
+
     export default defineComponent({
         components: {
             AppLayout,
@@ -69,6 +69,6 @@
                 this.$inertia.put(this.route('categorias.update', this.category.id), this.form)
             },
         }
-
+        
     })
 </script>
